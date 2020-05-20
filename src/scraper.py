@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+import pandas as pd
+import numpy as np
 
 url = "https://www.monster.ca/jobs/search/?q=Software-intern&where=Toronto&stpage=1&page=2"
 page = requests.get(url, timeout=10)
