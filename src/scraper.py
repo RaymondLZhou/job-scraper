@@ -15,6 +15,12 @@ job_elems = results.find_all("section", class_="card-content")
 
 jobList = []
 
+titles = []
+companies = []
+locations = []
+times = []
+links = []
+
 for job_elem in job_elems:
     title_elem = job_elem.find("h2", class_="title")
     company_elem = job_elem.find("div", class_="company")
@@ -24,17 +30,37 @@ for job_elem in job_elems:
     if None in(title_elem, company_elem, location_elem, time_elem):
         continue
 
+    title = title_elem.text.strip()
+    company = company_elem.text.strip()
+    location = location_elem.text.strip()
+    time = time_elem.text.strip().split('\n')[0] 
     link = job_elem.find("a")["href"]
 
     jobObject = {
-        "title": title_elem.text.strip(),
-        "company": company_elem.text.strip(),
-        "location": location_elem.text.strip(),
-        "time": time_elem.text.strip().split('\n')[0],
+        "title": title,
+        "company": company,
+        "location": location,
+        "time": time,
         "link": link
     }
 
     jobList.append(jobObject)
 
+    titles.append(title)
+    companies.append(company)
+    locations.append(location)
+    times.append(time)
+    links.append(link)
+
+jobFrame = pd.DataFrame({
+    "title": titles,
+    "company": companies,
+    "location": locations,
+    "time": times,
+    "link": links,
+})
+
 with open("data.json", "w") as outfile:
     json.dump(jobList, outfile, ensure_ascii=False, indent=4)
+
+jobFrame.to_csv("data.csv")
