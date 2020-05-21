@@ -1,6 +1,6 @@
 import json
 
-with open("data.json") as json_data:
+with open("..\\data\\jobs.json") as json_data:
     jobData = json.load(json_data)
 
 for job in jobData:
@@ -9,4 +9,5 @@ for job in jobData:
     print(job["location"])
     print(job["time"])
     print(job["link"])
+    print(job["source"])
     print()

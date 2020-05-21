@@ -20,6 +20,7 @@ companies = []
 locations = []
 times = []
 links = []
+sources = []
 
 for job_elem in job_elems:
     title_elem = job_elem.find("h2", class_="title")
@@ -35,13 +36,15 @@ for job_elem in job_elems:
     location = location_elem.text.strip()
     time = time_elem.text.strip().split('\n')[0] 
     link = job_elem.find("a")["href"]
+    source = "Monster"
 
     jobObject = {
         "title": title,
         "company": company,
         "location": location,
         "time": time,
-        "link": link
+        "link": link,
+        "source": source
     }
 
     jobList.append(jobObject)
@@ -51,6 +54,7 @@ for job_elem in job_elems:
     locations.append(location)
     times.append(time)
     links.append(link)
+    sources.append(source)
 
 jobFrame = pd.DataFrame({
     "title": titles,
@@ -58,9 +62,10 @@ jobFrame = pd.DataFrame({
     "location": locations,
     "time": times,
     "link": links,
+    "source": sources
 })
 
-with open("data.json", "w") as outfile:
+with open("..\\data\\jobs.json", "w") as outfile:
     json.dump(jobList, outfile, ensure_ascii=False, indent=4)
 
-jobFrame.to_csv("data.csv")
+jobFrame.to_csv("..\\data\\jobs.csv")
