@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import pandas as pd
+import writer
 
 def retrieveJobs(url):
     page = requests.get(url, timeout=10)
@@ -10,7 +11,7 @@ def retrieveJobs(url):
     job_elems = results.find_all("section", class_="card-content")
     return job_elems
 
-url = "https://www.monster.ca/jobs/search/?q=Software-intern&where=Toronto&stpage=1&page=2"
+url = "https://www.monster.ca/jobs/search/?q=Software-Intern&tm=30"
 
 job_elems = retrieveJobs(url)
 source = "Monster"
@@ -75,18 +76,7 @@ def frameBuild(titles, companies, locations, times, links, sources):
 
 jobFrame = frameBuild(titles, companies, locations, times, links, sources)
 
-def jsonWrite(path, jsonList):
-    with open(path, "w") as outfile:
-        json.dump(jsonList, outfile, ensure_ascii=False, indent=4)
-
-def csvWrite(path, csvFrame):
-    csvFrame.to_csv("..\\data\\jobs.csv")
-
-def dataWrite(jsonPath, jsonList, csvPath, csvFrame):
-    jsonWrite(jsonPath, jsonList)
-    csvWrite(csvPath, csvFrame)
-
 jsonPath = "..\\data\\jobs.json"
 csvPath = "..\\data\\jobs.csv"
 
-dataWrite(jsonPath, jobList, csvPath, jobFrame)
+writer.dataWrite(jsonPath, jobList, csvPath, jobFrame)
