@@ -1,5 +1,4 @@
 import json
-import pandas as pd
 
 def jsonWrite(path, jsonList):
     with open(path, "w") as outfile:
