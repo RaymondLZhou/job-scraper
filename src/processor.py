@@ -32,6 +32,9 @@ def processDataIndeed(job_elems, source, jobList, titles, companies, locations, 
         if(title == "" and company == "" and location == "" and time == ""):
             continue
 
+        if(company == "The Sydney Call Centre"):
+            continue
+        
         link = "https://ca.indeed.com" + job_elem.find("a")["href"]
 
         linker.appendData(title, company, location, time, link, source, jobList, titles, companies, locations, times, links, sources)

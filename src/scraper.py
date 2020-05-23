@@ -1,3 +1,7 @@
+import numpy as np
+from time import sleep
+from random import randint
+
 import retriever
 import processor
 import builder
@@ -11,15 +15,22 @@ times = []
 links = []
 sources = []
 
-url = "https://www.monster.ca/jobs/search/?q=Software-Intern&tm=30&stpage=1&page=2"
+url = "https://www.monster.ca/jobs/search/?q=Software-Intern&tm=30&stpage=1&page=5"
 job_elems = retriever.retrieveJobsMonster(url)
 source = "Monster"
 processor.processDataMonster(job_elems, source, jobList, titles, companies, locations, times, links, sources)
 
-url = "https://ca.indeed.com/jobs?q=Software+Intern&limit=50&radius=25"
-job_elems = retriever.retrieveJobsIndeed(url)
-source = "Indeed"
-processor.processDataIndeed(job_elems, source, jobList, titles, companies, locations, times, links, sources)
+urlBase = "https://ca.indeed.com/jobs?q=Software+Intern&limit=50&radius=25&start="
+pages = np.arange(0, 200, 50)
+
+for page in pages:
+    url = urlBase + str(page)
+    job_elems = retriever.retrieveJobsIndeed(url)
+    source = "Indeed"
+
+    processor.processDataIndeed(job_elems, source, jobList, titles, companies, locations, times, links, sources)
+
+    sleep(randint(2, 5))
 
 jobFrame = builder.frameBuild(titles, companies, locations, times, links, sources)
 
