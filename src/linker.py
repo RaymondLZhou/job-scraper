@@ -16,6 +16,8 @@ def verifyData(title_elem, company_elem, location_elem, time_elem):
 
     if(time_elem is None):
         time = ""
+    elif(time_elem == "Today" or time_elem == "Posted today"):
+        time = "0"
     else:
         time = time_elem.text.strip()
 

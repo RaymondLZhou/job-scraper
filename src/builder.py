@@ -10,4 +10,7 @@ def frameBuild(titles, companies, locations, times, links, sources):
         "source": sources
     })
 
+    jobFrame["time"] = jobFrame["time"].str.extract('(\\d+)')
+    jobFrame["time"] = pd.to_numeric(jobFrame["time"], errors="coerce")
+
     return jobFrame
