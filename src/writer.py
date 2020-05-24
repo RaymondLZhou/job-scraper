@@ -10,3 +10,4 @@ def csvWrite(path, csvFrame):
 def dataWrite(jsonPath, jsonList, csvPath, csvFrame):
     jsonWrite(jsonPath, jsonList)
     csvWrite(csvPath, csvFrame)
+    

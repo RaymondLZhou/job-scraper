@@ -38,3 +38,4 @@ def processDataIndeed(job_elems, source, jobList, titles, companies, locations, 
         link = "https://ca.indeed.com" + job_elem.find("a")["href"]
 
         linker.appendData(title, company, location, time, link, source, jobList, titles, companies, locations, times, links, sources)
+        

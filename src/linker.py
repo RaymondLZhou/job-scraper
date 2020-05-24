@@ -40,3 +40,4 @@ def appendData(title, company, location, time, link, source, jobList, titles, co
     times.append(time)
     links.append(link)
     sources.append(source)
+    

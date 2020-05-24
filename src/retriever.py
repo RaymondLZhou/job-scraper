@@ -14,3 +14,4 @@ def retrieveJobsIndeed(url):
     results = soup.find("td", id="resultsCol")
     job_elems = results.find_all("div", class_="jobsearch-SerpJobCard")
     return job_elems
+    
