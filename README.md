@@ -8,10 +8,11 @@ How to get project up and running on your local machine.
 
 ### Prerequisites
 
-* Install Python
-* Install requests
-* Install BeautifulSoup
-* Install pandas
+The follwing Python libraries are required.
+
+* requests
+* BeautifulSoup
+* pandas
 
 ### Running
 
