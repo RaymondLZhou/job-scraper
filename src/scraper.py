@@ -15,11 +15,13 @@ times = []
 links = []
 sources = []
 
+# Monster
 url = "https://www.monster.ca/jobs/search/?q=Software-Intern&tm=30&stpage=1&page=5"
 job_elems = retriever.retrieveJobsMonster(url)
 source = "Monster"
 processor.processDataMonster(job_elems, source, jobList, titles, companies, locations, times, links, sources)
 
+# Indeed
 urlBase = "https://ca.indeed.com/jobs?q=Software+Intern&limit=50&radius=25&start="
 pages = np.arange(0, 200, 50)
 
