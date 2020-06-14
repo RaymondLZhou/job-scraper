@@ -1,5 +1,6 @@
 import json
 
+# Write to json and csv files
 def jsonWrite(path, jsonList):
     with open(path, "w") as outfile:
         json.dump(jsonList, outfile, ensure_ascii=False, indent=4)

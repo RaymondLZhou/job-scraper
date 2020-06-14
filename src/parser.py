@@ -1,5 +1,6 @@
 import json
 
+# Parses stored data and prints to screen
 def jsonPrintEntry(entry):
     print(entry["title"])
     print(entry["company"])

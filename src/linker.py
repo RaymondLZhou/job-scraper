@@ -1,3 +1,4 @@
+# Clean data and account for empty cases
 def verifyData(title_elem, company_elem, location_elem, time_elem):
     if(title_elem is None):
         title = ""
@@ -22,7 +23,8 @@ def verifyData(title_elem, company_elem, location_elem, time_elem):
         time = time_elem.text.strip()
 
     return title, company, location, time
-
+    
+# Append data to lists
 def appendData(title, company, location, time, link, source, jobList, titles, companies, locations, times, links, sources):
     jobObject = {
         "title": title,

@@ -1,5 +1,6 @@
 import pandas as pd
 
+# Builds DataFrame from information
 def frameBuild(titles, companies, locations, times, links, sources):
     jobFrame = pd.DataFrame({
         "title": titles,
