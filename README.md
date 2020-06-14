@@ -1,6 +1,6 @@
 # Web Scraper Jobs
 
-Web scraper for job posting sites
+Web scraper for job posting sites created in Python
 
 ## Getting Started
 
